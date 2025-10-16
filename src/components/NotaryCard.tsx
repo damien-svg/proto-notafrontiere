@@ -12,7 +12,7 @@ const NotaryCard = ({ name, isSelected, onSelect }: NotaryCardProps) => {
   return (
     <Card 
       className={`
-        relative overflow-hidden cursor-pointer
+        relative overflow-hidden cursor-pointer h-full
         transition-all duration-500 ease-out
         hover:scale-105 hover:shadow-elegant
         ${isSelected 
@@ -22,7 +22,7 @@ const NotaryCard = ({ name, isSelected, onSelect }: NotaryCardProps) => {
       `}
       onClick={onSelect}
     >
-      <div className="p-8 flex flex-col items-center text-center space-y-4">
+      <div className="p-8 flex flex-col items-center text-center space-y-4 h-full">
         <div className={`
           w-20 h-20 rounded-full overflow-hidden
           transition-all duration-500
@@ -38,7 +38,7 @@ const NotaryCard = ({ name, isSelected, onSelect }: NotaryCardProps) => {
           />
         </div>
         
-        <div className="space-y-2">
+        <div className="space-y-2 flex-grow flex flex-col justify-center">
           <h3 className={`
             font-serif text-xl font-semibold
             transition-colors duration-300
@@ -55,7 +55,7 @@ const NotaryCard = ({ name, isSelected, onSelect }: NotaryCardProps) => {
           </p>
         </div>
         
-        <Button 
+        <Button
           variant={isSelected ? "secondary" : "outline"}
           className={`
             mt-4 w-full
