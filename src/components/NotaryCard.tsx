@@ -1,0 +1,75 @@
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { User } from "lucide-react";
+
+interface NotaryCardProps {
+  name: string;
+  isSelected: boolean;
+  onSelect: () => void;
+}
+
+const NotaryCard = ({ name, isSelected, onSelect }: NotaryCardProps) => {
+  return (
+    <Card 
+      className={`
+        relative overflow-hidden cursor-pointer
+        transition-all duration-500 ease-out
+        hover:scale-105 hover:shadow-elegant
+        ${isSelected 
+          ? 'bg-gradient-gold shadow-gold ring-2 ring-primary' 
+          : 'bg-card hover:bg-secondary'
+        }
+      `}
+      onClick={onSelect}
+    >
+      <div className="p-8 flex flex-col items-center text-center space-y-4">
+        <div className={`
+          w-20 h-20 rounded-full flex items-center justify-center
+          transition-all duration-500
+          ${isSelected 
+            ? 'bg-anthracite text-primary' 
+            : 'bg-secondary text-muted-foreground'
+          }
+        `}>
+          <User className="w-10 h-10" />
+        </div>
+        
+        <div className="space-y-2">
+          <h3 className={`
+            font-serif text-xl font-semibold
+            transition-colors duration-300
+            ${isSelected ? 'text-primary-foreground' : 'text-foreground'}
+          `}>
+            {name}
+          </h3>
+          
+          <p className={`
+            text-sm
+            ${isSelected ? 'text-primary-foreground/80' : 'text-muted-foreground'}
+          `}>
+            Notaire
+          </p>
+        </div>
+        
+        <Button 
+          variant={isSelected ? "secondary" : "outline"}
+          className={`
+            mt-4 w-full
+            ${isSelected 
+              ? 'bg-anthracite hover:bg-anthracite-light text-primary' 
+              : ''
+            }
+          `}
+        >
+          {isSelected ? 'Sélectionné' : 'Sélectionner'}
+        </Button>
+      </div>
+      
+      {isSelected && (
+        <div className="absolute inset-0 bg-gradient-gold opacity-10 pointer-events-none" />
+      )}
+    </Card>
+  );
+};
+
+export default NotaryCard;
