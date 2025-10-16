@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { User } from "lucide-react";
+import notaryProfile from "@/assets/notary-profile.jpg";
 
 interface NotaryCardProps {
   name: string;
@@ -24,14 +24,18 @@ const NotaryCard = ({ name, isSelected, onSelect }: NotaryCardProps) => {
     >
       <div className="p-8 flex flex-col items-center text-center space-y-4">
         <div className={`
-          w-20 h-20 rounded-full flex items-center justify-center
+          w-20 h-20 rounded-full overflow-hidden
           transition-all duration-500
           ${isSelected 
-            ? 'bg-anthracite text-primary' 
-            : 'bg-secondary text-muted-foreground'
+            ? 'ring-4 ring-primary shadow-gold' 
+            : 'ring-2 ring-border'
           }
         `}>
-          <User className="w-10 h-10" />
+          <img 
+            src={notaryProfile} 
+            alt={name}
+            className="w-full h-full object-cover"
+          />
         </div>
         
         <div className="space-y-2">
